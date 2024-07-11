@@ -15,6 +15,7 @@ import { ContactsTableMenuComponent } from './contacts-table-menu/contacts-table
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { ContactsService } from '../services/contacts.service';
 
 @Component({
   selector: 'vex-contacts-table',
@@ -99,9 +100,23 @@ export class ContactsTableComponent implements OnInit {
     }
   ];
 
-  constructor(private dialog: MatDialog) {}
+  constructor(
+    private dialog: MatDialog,
+    private contactsService: ContactsService
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.loadContacts();
+  }
+
+  loadContacts() {
+    this.contactsService.getContacts().subscribe({
+      next: (contacts) => {
+        this.tableData = contacts;
+      },
+      error: (err) => console.error('Error loading contacts', err)
+    });
+  }
 
   openContact(id?: Contact['id']) {
     this.dialog.open(ContactsEditComponent, {

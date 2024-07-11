@@ -104,7 +104,7 @@ export class ContactsEditComponent implements OnInit {
 
     this.contact.name = form.name;
     this.contact.email = form.email;
-    this.contact.phone = form.phone;
+    this.contact.phone1 = form.phone;
     this.contact.company = form.company;
     this.contact.notes = form.notes;
     this.contact.birthday = form.birthday;
