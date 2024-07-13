@@ -1,6 +1,5 @@
 export interface Contact {
   id?: number;
-  imageSrc?: string;
   name: string;
   email?: string;
   phone1?: string;
@@ -8,6 +7,4 @@ export interface Contact {
   telephone?: string;
   birthday?: string;
   businessId?: string;
-  selected: boolean;
-  starred: boolean;
 }

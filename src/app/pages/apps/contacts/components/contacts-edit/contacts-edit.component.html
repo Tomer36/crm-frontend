@@ -1,24 +1,8 @@
 <form (ngSubmit)="save()" [formGroup]="form">
   <div class="flex items-center" mat-dialog-title>
-    <img
-      *ngIf="contact?.imageSrc"
-      [src]="contact?.imageSrc"
-      class="avatar ltr:mr-5 rtl:ml-5" />
     <h2 class="headline m-0 flex-auto">
       {{ form.controls.name.value || "New Contact" }}
     </h2>
-
-    <button
-      (click)="toggleStar()"
-      class="text-secondary"
-      mat-icon-button
-      type="button">
-      <mat-icon
-        *ngIf="contact?.starred"
-        class="text-amber-600"
-        svgIcon="mat:star"></mat-icon>
-      <mat-icon *ngIf="!contact?.starred" svgIcon="mat:star_border"></mat-icon>
-    </button>
 
     <button
       [matMenuTriggerFor]="settingsMenu"
@@ -48,7 +32,7 @@
 
     <mat-form-field>
       <mat-label>Phone</mat-label>
-      <input formControlName="phone" matInput />
+      <input formControlName="phone1" matInput />
       <mat-icon matIconPrefix svgIcon="mat:phone"></mat-icon>
     </mat-form-field>
 

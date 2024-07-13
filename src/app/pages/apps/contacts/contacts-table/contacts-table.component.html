@@ -50,7 +50,6 @@
         <div class="card h-full overflow-hidden flex-auto">
           <vex-contacts-data-table
             (openContact)="openContact($event)"
-            (toggleStar)="toggleStar($event)"
             [columns]="tableColumns"
             [data]="tableData"
             [searchStr]="searchStr$ | async"></vex-contacts-data-table>

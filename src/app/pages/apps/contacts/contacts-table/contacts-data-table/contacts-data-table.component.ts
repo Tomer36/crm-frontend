@@ -65,7 +65,6 @@ export class ContactsDataTableComponent<T>
   @Input() pageSizeOptions = [10, 20, 50];
   @Input() searchStr: string = '';
 
-  @Output() toggleStar = new EventEmitter<Contact['id']>();
   @Output() openContact = new EventEmitter<Contact['id']>();
 
   visibleColumns: Array<keyof T | string> = [];
@@ -90,11 +89,6 @@ export class ContactsDataTableComponent<T>
     if (changes['searchStr']) {
       this.dataSource.filter = (this.searchStr || '').trim().toLowerCase();
     }
-  }
-
-  emitToggleStar(event: Event, id: Contact['id']) {
-    event.stopPropagation();
-    this.toggleStar.emit(id);
   }
 
   ngAfterViewInit() {

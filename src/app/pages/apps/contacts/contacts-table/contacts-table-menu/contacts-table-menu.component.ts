@@ -10,14 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 
 export interface ContactsTableMenu {
   type: 'link' | 'subheading';
-  id?:
-    | 'frequently'
-    | 'starred'
-    | 'all'
-    | 'family'
-    | 'friends'
-    | 'colleagues'
-    | 'business';
+  id?: 'all' | 'family' | 'friends' | 'colleagues' | 'business';
   icon?: string;
   label: string;
   classes?: {
@@ -46,58 +39,6 @@ export class ContactsTableMenuComponent implements OnInit {
       id: 'all',
       icon: 'mat:view_headline',
       label: 'All Contacts'
-    },
-    {
-      type: 'link',
-      id: 'frequently',
-      icon: 'mat:history',
-      label: 'Frequently contacted'
-    },
-    {
-      type: 'link',
-      id: 'starred',
-      icon: 'mat:star',
-      label: 'Starred'
-    },
-    {
-      type: 'subheading',
-      label: 'Labels'
-    },
-    {
-      type: 'link',
-      id: 'family',
-      icon: 'mat:label',
-      label: 'Family',
-      classes: {
-        icon: 'text-primary-600'
-      }
-    },
-    {
-      type: 'link',
-      id: 'friends',
-      icon: 'mat:label',
-      label: 'Friends',
-      classes: {
-        icon: 'text-green-600'
-      }
-    },
-    {
-      type: 'link',
-      id: 'colleagues',
-      icon: 'mat:label',
-      label: 'Colleagues',
-      classes: {
-        icon: 'text-amber-600'
-      }
-    },
-    {
-      type: 'link',
-      id: 'business',
-      icon: 'mat:label',
-      label: 'Business',
-      classes: {
-        icon: 'text-gray-600'
-      }
     }
   ];
 
@@ -113,16 +54,11 @@ export class ContactsTableMenuComponent implements OnInit {
   setFilter(category: ContactsTableMenu['id']) {
     this.activeCategory = category;
 
-    if (category === 'starred') {
-      return this.filterChange.emit(contactsData.filter((c) => c.starred));
-    }
-
     if (category === 'all') {
       return this.filterChange.emit(contactsData);
     }
 
     if (
-      category === 'frequently' ||
       category === 'family' ||
       category === 'friends' ||
       category === 'colleagues' ||

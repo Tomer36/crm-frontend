@@ -22,19 +22,6 @@
           </td>
         </ng-container>
 
-        <ng-container
-          *ngIf="column.type === 'checkbox'"
-          [matColumnDef]="column.property">
-          <th *matHeaderCellDef mat-header-cell mat-sort-header>
-            {{ column.label }}
-          </th>
-          <td *matCellDef="let row" [ngClass]="column.cssClasses" mat-cell>
-            <mat-checkbox
-              (click)="$event.stopPropagation()"
-              [checked]="row[column.property]"></mat-checkbox>
-          </td>
-        </ng-container>
-
         <ng-container *ngIf="column.type === 'image'" [matColumnDef]="column.property">
           <th *matHeaderCellDef mat-header-cell mat-sort-header>
             {{ column.label }}
@@ -46,7 +33,7 @@
               class="avatar h-9 w-9 align-middle my-2" />
             <ng-template #defaultImage>
               <img
-                src="assets/img/avatars/noavatar.png"
+                src="assets/img/avatars/topcosmetics.png"
                 class="avatar h-9 w-9 align-middle my-2" />
             </ng-template>
           </td>
@@ -65,18 +52,6 @@
               [ngClass]="column.cssClasses"
               class="w-10"
               mat-cell>
-              <button
-                (click)="emitToggleStar($event, row.id)"
-                mat-icon-button
-                type="button">
-                <mat-icon
-                  *ngIf="row[column.property]"
-                  class="text-amber-600"
-                  svgIcon="mat:star"></mat-icon>
-                <mat-icon
-                  *ngIf="!row[column.property]"
-                  svgIcon="mat:star_border"></mat-icon>
-              </button>
             </td>
           </ng-container>
 

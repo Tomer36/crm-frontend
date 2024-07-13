@@ -47,8 +47,6 @@ export class ContactsTableComponent implements OnInit {
   menuOpen = false;
 
   activeCategory:
-    | 'frequently'
-    | 'starred'
     | 'all'
     | 'family'
     | 'friends'
@@ -56,12 +54,6 @@ export class ContactsTableComponent implements OnInit {
     | 'business' = 'all';
   tableData: Contact[] = [];
   tableColumns: TableColumn<Contact>[] = [
-    {
-      label: '',
-      property: 'selected',
-      type: 'checkbox',
-      cssClasses: ['w-6']
-    },
     {
       label: '',
       property: 'imageSrc',
@@ -139,15 +131,6 @@ export class ContactsTableComponent implements OnInit {
     }
   });
 }
-
-
-  toggleStar(id: Contact['id']) {
-    const contact = this.tableData.find((c) => c.id === id);
-
-    if (contact) {
-      contact.starred = !contact.starred;
-    }
-  }
 
   setData(data: Contact[]) {
     this.tableData = data;
