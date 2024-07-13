@@ -1,4 +1,4 @@
-<form (ngSubmit)="save()" [formGroup]="form">
+<!-- <form (ngSubmit)="save()" [formGroup]="form">
   <div class="flex items-center" mat-dialog-title>
     <img
       *ngIf="contact?.imageSrc"
@@ -7,19 +7,6 @@
     <h2 class="headline m-0 flex-auto">
       {{ form.controls.name.value || "New Contact" }}
     </h2>
-
-    <button
-      (click)="toggleStar()"
-      class="text-secondary"
-      mat-icon-button
-      type="button">
-      <mat-icon
-        *ngIf="contact?.starred"
-        class="text-amber-600"
-        svgIcon="mat:star"></mat-icon>
-      <mat-icon *ngIf="!contact?.starred" svgIcon="mat:star_border"></mat-icon>
-    </button>
-
     <button
       [matMenuTriggerFor]="settingsMenu"
       class="text-secondary"
@@ -41,38 +28,30 @@
 
   <mat-dialog-content class="flex flex-col">
     <mat-form-field class="mt-6">
-      <mat-label>Name</mat-label>
+      <mat-label>TAMER</mat-label>
       <input cdkFocusInitial formControlName="name" matInput />
+
       <mat-icon matIconPrefix svgIcon="mat:person"></mat-icon>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Phone</mat-label>
       <input formControlName="phone" matInput />
-      <mat-icon matIconPrefix svgIcon="mat:phone"></mat-icon>
-    </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Phone2</mat-label>
-      <input formControlName="phone2" matInput />
-      <mat-icon matIconPrefix svgIcon="mat:phone"></mat-icon>
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>Telephone</mat-label>
-      <input formControlName="telephone" matInput />
       <mat-icon matIconPrefix svgIcon="mat:phone"></mat-icon>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>E-Mail</mat-label>
       <input formControlName="email" matInput />
+
       <mat-icon matIconPrefix svgIcon="mat:email"></mat-icon>
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>ID</mat-label>
-      <input formControlName="businessId" matInput />
+      <mat-label>Company</mat-label>
+      <input formControlName="company" matInput />
+
       <mat-icon matIconPrefix svgIcon="mat:business"></mat-icon>
     </mat-form-field>
 
@@ -89,6 +68,10 @@
       <mat-datepicker #datepickerRef></mat-datepicker>
     </mat-form-field>
 
+    <mat-form-field>
+      <mat-label>Notes</mat-label>
+      <textarea formControlName="notes" matInput></textarea>
+    </mat-form-field>
   </mat-dialog-content>
 
   <mat-dialog-actions align="end">
@@ -105,12 +88,14 @@
     <mat-icon svgIcon="mat:print"></mat-icon>
     <span>Print</span>
   </button>
+
   <button mat-menu-item>
     <mat-icon svgIcon="mat:download"></mat-icon>
     <span>Export</span>
   </button>
+
   <button mat-menu-item>
     <mat-icon svgIcon="mat:delete"></mat-icon>
     <span>Delete</span>
   </button>
-</mat-menu>
+</mat-menu> -->

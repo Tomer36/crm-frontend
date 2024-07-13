@@ -6,9 +6,8 @@ export interface Contact {
   phone1?: string;
   phone2?: string;
   telephone?: string;
-  company?: string;
-  notes?: string;
   birthday?: string;
+  businessId?: string;
   selected: boolean;
   starred: boolean;
 }

@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { scaleIn400ms } from '@vex/animations/scale-in.animation';
 import { fadeInRight400ms } from '@vex/animations/fade-in-right.animation';
 import { TableColumn } from '@vex/interfaces/table-column.interface';
-import { contactsData } from '../../../../../static-data/contacts';
 import { ReactiveFormsModule, UntypedFormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
 import { stagger40ms } from '@vex/animations/stagger.animation';
 import { MatDialog } from '@angular/material/dialog';
 import { ContactsEditComponent } from '../components/contacts-edit/contacts-edit.component';
+// import { ContactsActivityComponent } from '../components/contacts-activity/contacts-activity.component';
 import { Contact } from '../interfaces/contact.interface';
 import { AsyncPipe } from '@angular/common';
 import { ContactsDataTableComponent } from './contacts-data-table/contacts-data-table.component';
@@ -54,7 +54,7 @@ export class ContactsTableComponent implements OnInit {
     | 'friends'
     | 'colleagues'
     | 'business' = 'all';
-  tableData = contactsData;
+  tableData: Contact[] = [];
   tableColumns: TableColumn<Contact>[] = [
     {
       label: '',
@@ -69,20 +69,20 @@ export class ContactsTableComponent implements OnInit {
       cssClasses: ['min-w-9']
     },
     {
-      label: 'NAME',
+      label: 'שם',
       property: 'name',
       type: 'text',
       cssClasses: ['font-medium']
     },
     {
-      label: 'EMAIL',
-      property: 'email',
+      label: 'ת"ז',
+      property: 'businessId',
       type: 'text',
       cssClasses: ['text-secondary']
     },
     {
-      label: 'PHONE',
-      property: 'phone',
+      label: 'נייד',
+      property: 'phone1',
       type: 'text',
       cssClasses: ['text-secondary']
     },
@@ -119,11 +119,27 @@ export class ContactsTableComponent implements OnInit {
   }
 
   openContact(id?: Contact['id']) {
-    this.dialog.open(ContactsEditComponent, {
-      data: id || null,
-      width: '600px'
-    });
-  }
+  this.dialog.open(ContactsEditComponent, {
+    data: id || null,
+    width: '600px'
+  }).afterClosed().subscribe(updatedContact => {
+    if (updatedContact) {
+      // Find the index of the contact to update
+      const index = this.tableData.findIndex(contact => contact.id === updatedContact.id);
+
+      if (index >= 0) {
+        // If contact exists, update it
+        const updatedTableData = [...this.tableData]; // Create a new array
+        updatedTableData[index] = updatedContact;
+        this.tableData = updatedTableData;
+      } else {
+        // If contact does not exist, add it
+        this.tableData = [...this.tableData, updatedContact];
+      }
+    }
+  });
+}
+
 
   toggleStar(id: Contact['id']) {
     const contact = this.tableData.find((c) => c.id === id);

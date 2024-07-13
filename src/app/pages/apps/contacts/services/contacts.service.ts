@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Contact } from '../interfaces/contact.interface'; // Adjust the path according to your project structure
+import { Contact } from '../interfaces/contact.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContactsService {
 
-  private apiUrl = 'http://localhost:8081/api/customers'; // Replace with your API endpoint
+  private apiUrl = 'http://localhost:8081/api/customers';
 
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -25,7 +25,7 @@ export class ContactsService {
     return this.http.get<Contact>(url);
   }
 
-  addContact(contact: Contact): Observable<Contact> {
+  createContact(contact: Contact): Observable<Contact> {
     return this.http.post<Contact>(this.apiUrl, contact, this.httpOptions);
   }
 
